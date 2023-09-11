@@ -1,0 +1,10 @@
+{% extends 'layout/base.html.twig' %}
+{% block base_js %}
+
+    {{ script({ include: oViewConf.getModuleUrl("eyeable_assist", "js/eyeable_oxid.js") }) }}
+
+
+        
+    {{ parent() }}
+{% endblock %}
+
