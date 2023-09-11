@@ -9,7 +9,7 @@ Install via composer:
    composer require eyeable/eye-able-oxid
 ```
 
-How to Use: 
+Install manual: 
 1. Clone Repo into the modules directory of your oxid shop. The keep the provided folder structure:
  ```
    cd <shopRoot>
