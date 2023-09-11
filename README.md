@@ -3,6 +3,12 @@
 
 Check Out the differnet branches for the different Versions!
 
+Install via composer: 
+ ```
+   cd <shopRoot>
+   composer require eyeable/eye-able-oxid
+```
+
 How to Use: 
 1. Clone Repo into the modules directory of your oxid shop. The keep the provided folder structure:
  ```
