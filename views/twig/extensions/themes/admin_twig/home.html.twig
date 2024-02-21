@@ -3,19 +3,20 @@
 {% block admin_home_navigation_items %}
 
     {{ style({ include: oViewConf.getModuleUrl('eyeable_assist', 'css/eyeableassist.css') }) }}
+    {{ style() }}
 
-    <div class ="messagebox" style="color:#000000;">
+    <div class="messagebox eye-able-class" >
 
         <h3>{{ translate({ ident: "EYEABLE_REPORT_TITLE" }) }}</h3>
-        <p  class="eye-able-class" style="line-height: 150%;">{{ translate({ ident: "EYEABLE_REPORT_EXPLANATION" }) }}</p>
+        <p  class="eye-able-class">{{ translate({ ident: "EYEABLE_REPORT_EXPLANATION" }) }}</p>
 
         {% set eyeablereport = oViewConf.getLatestEyeableReportData() %}
 
         {% if eyeablereport and eyeablereport.getErrorCount() >= 0 %}
-            <pre><p class="eye-able-class" style="line-height: 150%;font: 13px 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;"><b>{{ translate({ ident: "EYEABLE_LATEST_REPORT_PAGE" }) }}</b>{{ eyeablereport.getTestedPage() }}&emsp;&emsp;<b>{{ translate({ ident: "EYEABLE_LATEST_REPORT_ERRORCOUNT" }) }}</b>{{ eyeablereport.getErrorCount() }}&emsp;&emsp;<b>{{ translate({ ident: "EYEABLE_LATEST_REPORT_DATE" }) }} </b>{{ eyeablereport.getReportDate() }}</p></pre>
+            <pre><p class="eye-able-class" ><b>{{ translate({ ident: "EYEABLE_LATEST_REPORT_PAGE" }) }}</b>{{ eyeablereport.getTestedPage() }}&emsp;&emsp;<b>{{ translate({ ident: "EYEABLE_LATEST_REPORT_ERRORCOUNT" }) }}</b>{{ eyeablereport.getErrorCount() }}&emsp;&emsp;<b>{{ translate({ ident: "EYEABLE_LATEST_REPORT_DATE" }) }} </b>{{ eyeablereport.getReportDate() }}</p></pre>
 
         {% else %}
-            <p class="eye-able-class" style="line-height: 150%">{{ translate({ ident: "EYEABLE_PLEASE_WAIT_FOR_REPORT" }) }}</p>
+            <p class="eye-able-class" >{{ translate({ ident: "EYEABLE_PLEASE_WAIT_FOR_REPORT" }) }}</p>
         {% endif %}
     </div>
     <hr>
@@ -27,10 +28,11 @@
                 let widgetUrl = '{{ oViewConf.getShopURL() }}' + '/admin/index.php?cl=eyeabletrigger&fnc=triggerEyeableReport';
 
                 const xhttp = new XMLHttpRequest();
-                xhttp.timeout = 1000;
+                xhttp.timeout = 10;
                 xhttp.open('GET', widgetUrl, true);
                 xhttp.ontimeout = (e) => {
                     // XMLHttpRequest timed out. We did not want a response anway
+                    xhttp.abort();
                 };
                 xhttp.send();
             }

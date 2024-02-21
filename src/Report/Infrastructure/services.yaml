@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  EyeAble\EyeAbleAssist\Report\Infrastructure\ReportProviderInterface:
+    class: EyeAble\EyeAbleAssist\Report\Infrastructure\ReportProvider

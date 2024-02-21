@@ -9,15 +9,12 @@ declare(strict_types=1);
 
 namespace EyeAble\EyeAbleAssist\Tests\Codeception;
 
-use Codeception\Util\Fixtures;
 use OxidEsales\Codeception\Page\Home;
 use OxidEsales\Facts\Facts;
-use EyeAble\EyeAbleAssist\Service\ModuleSettings;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 
 /**
  * Inherited Methods
- *
  * @method void wantToTest($text)
  * @method void wantTo($text)
  * @method void execute($callable)

@@ -21,7 +21,7 @@ class Caller implements CallerInterface
         private ContextInterface $context,
         private Settings $moduleSettings
     ) {
-        ini_set('max_execution_time', self::CURL_TIMEOUT);
+        //ini_set('max_execution_time', self::CURL_TIMEOUT);
     }
 
     public function fetchReport(): Page
@@ -54,6 +54,7 @@ class Caller implements CallerInterface
     ): string {
         $apiUrl = $this->moduleSettings->getApiUrl();
         $apiKey = $this->moduleSettings->getApiKey();
+
         return $apiUrl . '?apiKey=' . $apiKey . '&url=' . urlencode($shopUrl);
     }
 

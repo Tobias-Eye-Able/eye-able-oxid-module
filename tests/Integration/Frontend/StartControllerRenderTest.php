@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace EyeAble\EyeAbleAssist\Tests\Integration\Service;
+namespace EyeAble\EyeAbleAssist\Tests\Integration;
 
 use OxidEsales\Eshop\Application\Controller\StartController as EshopStartController;
 use PHPUnit\Framework\TestCase;

@@ -1,0 +1,8 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  EyeAble\EyeAbleAssist\Caller\Service\CallerServiceInterface:
+    class: EyeAble\EyeAbleAssist\Caller\Service\CallerService
+    public: true

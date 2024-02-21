@@ -19,10 +19,12 @@ $aModule = [
     'description' =>  'This is the Eye-Able® Assist Module. It helps to improve the accesibility of your shop or website. Eye-Able® Assist allows customers to customize the website to their individual needs.',
     'thumbnail'   => 'pictures/logo.png',
     'version'     => '2.0.0',
-    'author'      => 'Webinclusion GmbH',
+    'author'      => 'Webinclusion GmbH, OXID eSales AG',
     'url'         => 'https://eye-able.com/',
     'email'       => 'info@eye-able.com',
-    'extend'      => [],
+    'extend'      => [
+        \OxidEsales\Eshop\Core\ViewConfig::class => \EyeAble\EyeAbleAssist\Shop\ViewConfig::class
+    ],
     'blocks'      => [
         [
             'template' => 'layout/base.tpl',
