@@ -21,7 +21,7 @@ class Caller implements CallerInterface
         private ContextInterface $context,
         private Settings $moduleSettings
     ) {
-        ini_set('max_execution_time', self::CURL_TIMEOUT);
+        //ini_set('max_execution_time', self::CURL_TIMEOUT);
     }
 
     public function fetchReport(): Page
