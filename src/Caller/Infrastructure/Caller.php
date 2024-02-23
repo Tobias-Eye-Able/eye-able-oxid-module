@@ -15,7 +15,7 @@ use CurlHandle;
 
 class Caller implements CallerInterface
 {
-    private const CURL_TIMEOUT = '240';
+    private const CURL_TIMEOUT = '10';
 
     public function __construct(
         private ContextInterface $context,
