@@ -9,5 +9,5 @@ namespace EyeAble\EyeAbleAssist\Caller\Infrastructure;
 
 interface CallerInterface
 {
-    public function fetchReport(): array;
+    public function fetchReport(): Page;
 }

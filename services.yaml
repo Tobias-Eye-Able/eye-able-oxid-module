@@ -1,3 +1,4 @@
 imports:
   - { resource: src/Report/services.yaml }
   - { resource: src/Caller/services.yaml }
+  - { resource: src/Module/services.yaml }

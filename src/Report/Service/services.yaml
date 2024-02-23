@@ -6,3 +6,6 @@ services:
   EyeAble\EyeAbleAssist\Report\Service\ReportServiceInterface:
     class: EyeAble\EyeAbleAssist\Report\Service\ReportService
     public: true
+
+  EyeAble\EyeAbleAssist\Report\Service\ReportTrigger:
+    public: true

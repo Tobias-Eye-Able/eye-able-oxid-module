@@ -32,8 +32,33 @@ $aModule = [
             'file' => 'views/smarty/blocks/base.tpl'
         ]
     ],
+    'controllers' => [
+        'eyeabletrigger' => \EyeAble\EyeAbleAssist\Shop\Controller\ReportController::class
+    ],
     'events' => [
         'onActivate' => '\EyeAble\EyeAbleAssist\Core\ModuleEvents::onActivate',
         'onDeactivate' => '\EyeAble\EyeAbleAssist\Core\ModuleEvents::onDeactivate'
     ],
+    'settings' => [
+        /** Main */
+        [
+            'group'       => 'eyeableassist_main',
+            'name'        => 'eyeableassist_frequence',
+            'type'        => 'select',
+            'constraints'  => '1d|7d|14d',
+            'value'       => '7d'
+        ],
+        [
+            'group'       => 'eyeableassist_main',
+            'name'        => 'eyeableassist_apiurl',
+            'type'        => 'str',
+            'value'       => 'https://audit-api.eye-able.com/auditStats'
+        ],
+        [
+            'group' => 'eyeableassist_main',
+            'name'  => 'eyeableassist_apikey',
+            'type'  => 'str',
+            'value' => 'VZNJG65cb2fce4q5'
+        ],
+    ]
 ];

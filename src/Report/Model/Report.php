@@ -12,7 +12,7 @@ namespace EyeAble\EyeAbleAssist\Report\Model;
 use OxidEsales\Eshop\Core\Model\BaseModel;
 use DateTime;
 
-final class Report extends BaseModel
+class Report extends BaseModel
 {
     protected $_sClassName = 'eyablereport';
 
@@ -24,16 +24,16 @@ final class Report extends BaseModel
         $this->init('eyeablereports');
     }
 
-    public function getReport(): ?array
+    public function getReport(): array
     {
         return $this->getRawFieldData('report') ?
-            json_decode($this->getRawFieldData('report'), true) : null;
+            json_decode($this->getRawFieldData('report'), true) : [];
     }
 
-    public function getIssuedAt(): ?DateTime
+    public function getIssuedAt(): DateTime
     {
         return $this->getRawFieldData('issued_at') ?
-            new DateTime($this->getFieldData('issued_at')) : null;
+            new DateTime($this->getFieldData('issued_at')) : new DateTime('now');
     }
 
     public function setReport(array $report): void

@@ -9,19 +9,32 @@ declare(strict_types=1);
 
 namespace EyeAble\EyeAbleAssist\Tests\Integration\Caller\Service;
 
-use EyeAble\EyeAbleAssist\Caller\Infrastructure\CallerInterface;
-use EyeAble\EyeAbleAssist\Caller\Service\CallerServiceInterface;
+use EyeAble\EyeAbleAssist\Caller\Infrastructure\Caller;
+use EyeAble\EyeAbleAssist\Caller\Infrastructure\Page;
+use EyeAble\EyeAbleAssist\Caller\Service\CallerService;
+use EyeAble\EyeAbleAssist\Caller\Exception\Caller as CallerException;
 use EyeAble\EyeAbleAssist\Report\Model\Report;
-use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
 use OxidEsales\EshopCommunity\Tests\Integration\IntegrationTestCase;
+use Symfony\Component\Filesystem\Path;
 
 final class CallerServiceTest extends IntegrationTestCase
 {
-    public function testFetchReport(): void
+    public function testFetchReportSuccess(): void
     {
-        $service = ContainerFactory::getInstance()
-            ->getContainer()
-            ->get(CallerServiceInterface::class);
+        $page = new Page(
+            file_get_contents(Path::join(__DIR__, '..', '..', '..', 'Fixtures', 'success_response.txt')),
+            '',
+            ['http_code' => '200']
+        );
+
+        $caller = $this->createPartialMock(
+            Caller::class,
+            ['fetchReport']
+        );
+        $caller->method('fetchReport')
+            ->willReturn($page);
+
+        $service = new CallerService($caller);
 
         $reportId = $service->createReport();
 
@@ -31,5 +44,77 @@ final class CallerServiceTest extends IntegrationTestCase
         $report->load($reportId);
 
         $this->assertTrue($report->isLoaded());
+    }
+
+    public function testFetchReportNoInfo(): void
+    {
+        $caller = $this->getCallerMock(
+            new Page(
+                '',
+                '',
+                ['bla' => '500']
+            )
+        );
+        $service = new CallerService($caller);
+
+        $this->expectException(CallerException::class);
+        $service->createReport();
+    }
+
+    public function testFetchReportHttp500(): void
+    {
+        $caller = $this->getCallerMock(
+            new Page(
+                '',
+                '',
+                ['http_code' => '500']
+            )
+        );
+        $service = new CallerService($caller);
+
+        $this->expectException(CallerException::class);
+        $service->createReport();
+    }
+
+    public function testFetchReportNoJson(): void
+    {
+        $caller = $this->getCallerMock(
+            new Page(
+                'no json',
+                '',
+                ['http_code' => '200']
+            )
+        );
+        $service = new CallerService($caller);
+
+        $this->expectException(CallerException::class);
+        $service->createReport();
+    }
+
+    public function testFetchReportFailure(): void
+    {
+        $caller = $this->getCallerMock(
+            new Page(
+                file_get_contents(Path::join(__DIR__, '..', '..', '..', 'Fixtures', 'failure_response.txt')),
+                '',
+                ['http_code' => '200']
+            )
+        );
+        $service = new CallerService($caller);
+
+        $this->expectException(CallerException::class);
+        $service->createReport();
+    }
+
+    private function getCallerMock(Page $page): Caller
+    {
+        $caller = $this->createPartialMock(
+            Caller::class,
+            ['fetchReport']
+        );
+        $caller->method('fetchReport')
+            ->willReturn($page);
+
+        return $caller;
     }
 }

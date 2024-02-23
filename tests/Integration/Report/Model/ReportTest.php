@@ -24,9 +24,8 @@ final class ReportTest extends IntegrationTestCase
      * @var string[]
      */
     private $otherData = [
-        'url' => 'http://myoxidehop.local',
-        'page' => 'startpage',
-        'errorcount' => '12'
+        'http://myoxidehop.local',
+        'totalWarnings' => '12'
     ];
 
     public function testLoadReportById(): void

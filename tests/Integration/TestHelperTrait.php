@@ -22,14 +22,16 @@ trait TestHelperTrait
      */
     private $data = [
         'first' => [
-            'url' => 'http://myoxidehop.local',
-            'page' => 'startpage',
-            'errorcount' => '66'
+            'crawlInfo' => [
+                'start' => 'http://myoxidehop.local',
+            ],
+            'totalWarnings' => '66'
         ],
         'second' => [
-            'url' => 'http://myoxidehop.local',
-            'page' => 'startpage',
-            'errorcount' => '21'
+            'crawlInfo' => [
+                'start' => 'http://myoxidehop.local',
+            ],
+            'totalWarnings' => '21'
         ],
     ];
 

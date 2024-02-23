@@ -26,7 +26,6 @@ final class AdminCest
         $I->loginAdmin();
 
         $I->waitForText(Translator::translate('EYEABLE_REPORT_TITLE'));
-        $I->waitForText(Translator::translate('EYEABLE_REPORT_EXPLANATION'));
         $I->waitForText(Translator::translate('EYEABLE_PLEASE_WAIT_FOR_REPORT'));
     }
 
@@ -40,21 +39,19 @@ final class AdminCest
         $I->loginAdmin();
 
         $I->waitForText(Translator::translate('EYEABLE_REPORT_TITLE'));
-        $I->waitForText(Translator::translate('EYEABLE_REPORT_EXPLANATION'));
-        $I->waitForText(Translator::translate('EYEABLE_LATEST_REPORT_PAGE') . 'startpage');
+        $I->waitForText(Translator::translate('EYEABLE_LATEST_REPORT_PAGE') . 'http://myoxidehop.local');
         $I->waitForText(Translator::translate('EYEABLE_LATEST_REPORT_ERRORCOUNT') . '66');
-        $I->waitForText(
-            Translator::translate('EYEABLE_LATEST_REPORT_DATE') .
-            date('Y-m-d 12:12:12')
-        );
+        $I->waitForText(Translator::translate('EYEABLE_LATEST_REPORT_DATE'));
+        $I->waitForText(date('Y-m-d 12:12:12'));
     }
 
     private function insertReport(AcceptanceAdminTester $I): void
     {
         $data = [
-            'url' => 'http://myoxidehop.local',
-            'page' => 'startpage',
-            'errorcount' => '66'
+            'crawlInfo' => [
+                'start' => 'http://myoxidehop.local',
+            ],
+            'totalWarnings' => '66'
         ];
 
         $I->haveInDatabase(

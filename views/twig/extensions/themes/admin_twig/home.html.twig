@@ -2,18 +2,42 @@
 
 {% block admin_home_navigation_items %}
 
-    <p>{{ translate({ ident: "EYEABLE_REPORT_TITLE" }) }}</p>
-    <p>{{ translate({ ident: "EYEABLE_REPORT_EXPLANATION" }) }}</p>
+    {{ style({ include: oViewConf.getModuleUrl('eyeable_assist', 'css/eyeableassist.css') }) }}
+    {{ style() }}
 
-    {% set eyeablereport = oViewConf.getLatestEyeableReportData() %}
+    <div class="messagebox eye-able-class" >
 
-    {% if eyeablereport %}
-        <p>{{ translate({ ident: "EYEABLE_LATEST_REPORT_PAGE" }) }}{{ eyeablereport.getTestedPage() }}</p>
-        <p>{{ translate({ ident: "EYEABLE_LATEST_REPORT_ERRORCOUNT" }) }}{{ eyeablereport.getErrorCount() }}</p>
-        <p>{{ translate({ ident: "EYEABLE_LATEST_REPORT_DATE" }) }}{{ eyeablereport.getReportDate() }}</p>
-    {% else %}
-        <p>{{ translate({ ident: "EYEABLE_PLEASE_WAIT_FOR_REPORT" }) }}
-    {% endif %}
+        <h3>{{ translate({ ident: "EYEABLE_REPORT_TITLE" }) }}</h3>
+        <p  class="eye-able-class">{{ translate({ ident: "EYEABLE_REPORT_EXPLANATION" }) }}</p>
+
+        {% set eyeablereport = oViewConf.getLatestEyeableReportData() %}
+
+        {% if eyeablereport and eyeablereport.getErrorCount() >= 0 %}
+            <pre><p class="eye-able-class" ><b>{{ translate({ ident: "EYEABLE_LATEST_REPORT_PAGE" }) }}</b>{{ eyeablereport.getTestedPage() }}&emsp;&emsp;<b>{{ translate({ ident: "EYEABLE_LATEST_REPORT_ERRORCOUNT" }) }}</b>{{ eyeablereport.getErrorCount() }}&emsp;&emsp;<b>{{ translate({ ident: "EYEABLE_LATEST_REPORT_DATE" }) }} </b>{{ eyeablereport.getReportDate() }}</p></pre>
+
+        {% else %}
+            <p class="eye-able-class" >{{ translate({ ident: "EYEABLE_PLEASE_WAIT_FOR_REPORT" }) }}</p>
+        {% endif %}
+    </div>
+    <hr>
+
+    <script>
+        window.addEventListener(
+            'DOMContentLoaded',
+            function () {
+                let widgetUrl = '{{ oViewConf.getShopURL() }}' + '/admin/index.php?cl=eyeabletrigger&fnc=triggerEyeableReport';
+
+                const xhttp = new XMLHttpRequest();
+                xhttp.timeout = 10;
+                xhttp.open('GET', widgetUrl, true);
+                xhttp.ontimeout = (e) => {
+                    // XMLHttpRequest timed out. We did not want a response anway
+                    xhttp.abort();
+                };
+                xhttp.send();
+            }
+        );
+    </script>
 
     {{ parent() }}
 {% endblock %}

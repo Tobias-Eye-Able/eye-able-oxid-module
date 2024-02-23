@@ -12,7 +12,7 @@ namespace EyeAble\EyeAbleAssist\Report\Infrastructure;
 use EyeAble\EyeAbleAssist\Report\Model\Report;
 use OxidEsales\EshopCommunity\Internal\Framework\Database\QueryBuilderFactoryInterface;
 
-final class ReportProvider implements ReportProviderInterface
+class ReportProvider implements ReportProviderInterface
 {
     public function __construct(private QueryBuilderFactoryInterface $queryBuilderFactory)
     {

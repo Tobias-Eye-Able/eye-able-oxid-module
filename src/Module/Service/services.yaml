@@ -1,0 +1,7 @@
+services:
+  _defaults:
+    autowire: true
+    public: false
+
+  EyeAble\EyeAbleAssist\Module\Service\Settings:
+    public: true
