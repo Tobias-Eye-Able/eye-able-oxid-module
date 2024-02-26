@@ -15,13 +15,13 @@ use CurlHandle;
 
 class Caller implements CallerInterface
 {
-    private const CURL_TIMEOUT = '240';
+    private const CURL_TIMEOUT = '10';
 
     public function __construct(
         private ContextInterface $context,
         private Settings $moduleSettings
     ) {
-        ini_set('max_execution_time', self::CURL_TIMEOUT);
+        //ini_set('max_execution_time', self::CURL_TIMEOUT);
     }
 
     public function fetchReport(): Page
