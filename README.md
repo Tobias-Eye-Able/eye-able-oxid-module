@@ -15,8 +15,7 @@ The module only works when a config file is provided. For getting a Config File 
 ```
 
 ## Install for development purposes
-1. 
-2. Clone the repository into a suitable directory of your oxid shop, e.g. dev-packages.
+1. Clone the repository into a suitable directory of your oxid shop, e.g. dev-packages.
  ```
   cd <shop installation path>
   git clone https://github.com/Tobias-Eye-Able/eye-able-oxid-module.git dev-packages/EyeAbleAssist --branch=b-7.0.x-report
