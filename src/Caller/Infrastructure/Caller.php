@@ -67,7 +67,7 @@ class Caller implements CallerInterface
         curl_setopt($curlHandle, CURLOPT_TIMEOUT, self::CURL_TIMEOUT);
         curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curlHandle, CURLOPT_HEADER, false);
-        curl_setopt($curlHandle, CURLOPT_USERAGENT, 'EYEABLE-OXID-MODULE ' . $url);
+        curl_setopt($curlHandle, CURLOPT_USERAGENT, 'EYEABLE-OXID-MODULE');
         curl_setopt($curlHandle, CURLOPT_FORBID_REUSE, true);
         curl_setopt($curlHandle, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curlHandle, CURLINFO_HEADER_OUT, true);
