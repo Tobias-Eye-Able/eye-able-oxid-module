@@ -38,4 +38,17 @@ final class ReportProviderTest extends IntegrationTestCase
 
          $this->assertSame($this->second, $report->getId());
     }
+
+    public function testGetLatestReportIncludeEmpty(): void
+    {
+        $provider = new ReportProvider(
+            ContainerFactory::getInstance()
+                ->getContainer()
+                ->get(QueryBuilderFactoryInterface::class)
+        );
+
+        $report = $provider->getLatestReport(true);
+
+        $this->assertSame($this->third, $report->getId());
+    }
 }

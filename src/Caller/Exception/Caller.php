@@ -13,9 +13,9 @@ use Exception;
 
 final class Caller extends Exception
 {
-    public static function byHttpResponseCode(): self
+    public static function byHttpResponseCode(int $code): self
     {
-        return new self('Did not get expected http response code 200');
+        return new self(sprintf('Did not get expected http response code 200, got %s', $code));
     }
 
     public static function byErrorMessage(string $message): self
