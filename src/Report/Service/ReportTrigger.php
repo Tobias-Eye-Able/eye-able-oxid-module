@@ -27,13 +27,13 @@ class ReportTrigger
 
     public function triggerReport(): void
     {
-        $reportModel = $this->reportProvider->getLatestReport(true);
+        $reportModel = $this->reportProvider->getLatestReport();
 
         Registry::getLogger()->debug('trigger start');
         $start = microtime(true);
         $mustFetch = false;
 
-        if ($this->needValidReport($reportModel) ) {
+        if ($this->needValidReport($reportModel)) {
             $mustFetch = true;
             $reportModel->delete();
         }

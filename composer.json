@@ -55,7 +55,7 @@
         "tests-integration": "XDEBUG_MODE=coverage vendor/bin/phpunit --bootstrap=/var/www/source/bootstrap.php --config=tests/ --testsuite=Integration",
         "tests-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text --bootstrap=/var/www/source/bootstrap.php --config=tests/ --coverage-html=tests/result/coverage",
 
-        "tests-codeception": "(cd /var/www/ && THEME_ID=apex MODULE_IDS=eyeable_assist /var/www/vendor/bin/codecept run Acceptance,AcceptanceAdmin -c /var/www/vendor/eyeable/eye-able-oxid/tests/codeception.yml )",
+        "tests-codeception": "(cd /var/www/ && THEME_ID=apex MODULE_IDS=eyeable_assist /var/www/vendor/bin/codecept run acceptance,acceptanceAdmin -c /var/www/vendor/eyeable/eye-able-oxid/tests/codeception.yml )",
 
         "tests-all": [
             "@tests-integration",

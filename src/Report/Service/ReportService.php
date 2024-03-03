@@ -24,7 +24,7 @@ final class ReportService implements ReportServiceInterface
 
     public function getLatestReportData(): ReportDataInterface
     {
-        $model = $this->reportProvider->getLatestReport();
+        $model = $this->reportProvider->getLatestValidReport();
 
         $raw = $model->getReport();
         $reportData = new ReportData(
