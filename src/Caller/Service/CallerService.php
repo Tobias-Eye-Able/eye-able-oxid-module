@@ -52,7 +52,8 @@ class CallerService implements CallerServiceInterface
             !isset($page->getInfo()['http_code']) ||
             200 !== (int) $page->getInfo()['http_code']
         ) {
-            throw Caller::byHttpResponseCode((int) $page->getInfo()['http_code']);
+            $code = isset($page->getInfo()['http_code']) ? (int) $page->getInfo()['http_code'] : -1;
+            throw Caller::byHttpResponseCode($code);
         }
         if (0 < strlen($page->getErrorMessage())) {
             throw Caller::byErrorMessage($page->getErrorMessage());
