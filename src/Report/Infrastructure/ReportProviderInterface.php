@@ -11,5 +11,5 @@ use EyeAble\EyeAbleAssist\Report\Model\Report;
 
 interface ReportProviderInterface
 {
-    public function getLatestReport(): Report;
+    public function getLatestReport(bool $includeEmpty = false): Report;
 }

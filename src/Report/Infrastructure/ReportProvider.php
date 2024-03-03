@@ -18,13 +18,19 @@ class ReportProvider implements ReportProviderInterface
     {
     }
 
-    public function getLatestReport(): Report
+    public function getLatestReport(bool $includeEmpty = false): Report
     {
         $report = oxNew(Report::class);
 
         $queryBuilder = $this->queryBuilderFactory->create();
         $queryBuilder->select($report->getViewName() . '.oxid')
-            ->from($report->getViewName())
+            ->from($report->getViewName());
+
+        if (!$includeEmpty) {
+            $queryBuilder->where('json_length(report) > 0');
+        }
+
+        $queryBuilder
             ->orderBy($report->getViewName() . '.issued_at', 'DESC')
             ->setMaxResults(1);
 
