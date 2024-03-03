@@ -25,13 +25,6 @@ $aModule = [
     'extend'      => [
         \OxidEsales\Eshop\Core\ViewConfig::class => \EyeAble\EyeAbleAssist\Shop\ViewConfig::class
     ],
-    'blocks'      => [
-        [
-            'template' => 'layout/base.tpl',
-            'block' => 'base_js',
-            'file' => 'views/smarty/blocks/base.tpl'
-        ]
-    ],
     'controllers' => [
         'eyeabletrigger' => \EyeAble\EyeAbleAssist\Shop\Controller\ReportController::class
     ],
