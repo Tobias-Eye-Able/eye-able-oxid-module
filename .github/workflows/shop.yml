@@ -192,7 +192,7 @@ jobs:
             -e THEME_ID=apex \
             -e SELENIUM_SERVER_HOST=selenium \
             -e BROWSER_NAME=chrome \
-            php vendor/bin/codecept run acceptanceAdmin \
+            php vendor/bin/codecept run AcceptanceAdmin \
               --bootstrap=/var/www/source/bootstrap.php \
               -c tests/codeception.yml \
               --ext DotReporter 
