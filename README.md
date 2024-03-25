@@ -8,6 +8,11 @@ You will also get a preview of our <a href="https://eye-able.com/report/" target
 In a Demo-mode Eye-Able® Assist can be used with a limited amount of functionalities. To get the full Eye-Able® Assist Software functionalities you need to purchase a license from us. The full license lets you customize Eye-Able® Assist so that it will fit to your corporate design. For more Information check out our <a href="https://eye-able.com/assist/" target="_blank">Website</a> or contact us under [info@eye-able.com](mailto:info@eye-able.comt)
  website and contact us!
 
+### Configuration
+
+As of Eye-Able® Assist version 3, no configuration is required but is still possible.
+
+In the Administrator Panel, do not change the Eye-Able® report API URL and the Eye-Able® API key unless explicitly instructed to do so by Eye-Able®
 
 ### Installation Process
 
